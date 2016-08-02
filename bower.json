@@ -1,0 +1,28 @@
+{
+  "name": "angular-d3-word-cloud",
+  "description": "An AngularJS directive for angular-d3-word-cloud.js base on d3.js",
+  "main": ["dist/angular-d3-word-cloud.js"],
+  "authors": [
+    "will.chen"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.x",
+    "bootstrap": "^3.3.6",
+    "d3": "^3.3.13",
+    "font-awesome": "^4.6.3",
+    "jquery": "^1.11.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src",
+    "test",
+    "tests",
+    "lib",
+    "examples"
+  ]
+}
