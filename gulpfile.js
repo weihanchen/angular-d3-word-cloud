@@ -6,7 +6,8 @@ var clean = require('gulp-clean'),
 
 gulp.task('js', function() {
     return gulp.src(['bower_components/bootstrap/dist/js/bootstrap.min.js',
-            'bower_components/jquery/dist/jquery.min.js', 'bower_components/angular/angular.min.js'
+            'bower_components/jquery/dist/jquery.min.js', 'bower_components/angular/angular.min.js',
+            'bower_components/d3/d3.min.js'
         ])
         .pipe(gulp.dest('examples/js/plugins'));
 });
