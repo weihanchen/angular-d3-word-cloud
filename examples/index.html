@@ -27,12 +27,66 @@
         <a href="https://github.com/weihanchen/angular-d3-word-cloud/tarball/master" class="btn">Download .tar.gz</a>
     </section>
     <section class="main-content">
+        <!--dependencies-->
         <h3>
-<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic Usage</h3>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h3>
+        <ul>
+            <li><a href="https://d3js.org/">d3.js</a></li>
+            <li><a href="https://www.jasondavies.com/wordcloud/">d3.layout.cloud.js</a></li>
+        </ul>
+        <h3>
+        <!--how-to-use-->
+
+        <a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h3>
+        <p>Add dependencies to the </p> section of your index html:
         <div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">meta</span> <span class="pl-e">charset</span>=<span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>&gt;  <span class="pl-c">&lt;!-- it's important for d3.js --&gt;</span>
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>js/plugins/jquery.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
 &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>js/plugins/angular.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
 &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>js/plugins/d3.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
-&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>dist/angular-word-cloud.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>js/plugins/d3.layout.cloud.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>js/controllers/app.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>dist/angular-word-cloud.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+        <h3>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options</h3>
+        <ul>
+            <li>
+                <code>words=[array]</code> -&gt; [{text: '',size: 0}]</li>
+            <li><code>height=[number]</code></li>
+            <li><code>width=[number]</code></li>
+            <li>
+                <code>on-click=[function]</code> -&gt; word clicked callback</li>
+        </ul>
+        <h3>
+<a id="directive-usage" class="anchor" href="#directive-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Directive Usage</h3>
+        <div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>wordsCloud<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">word</span><span class="pl-e">-cloud</span> <span class="pl-e">words</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.words<span class="pl-pds">"</span></span> <span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.width<span class="pl-pds">"</span></span> <span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.height<span class="pl-pds">"</span></span> <span class="pl-e">on-click</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.wordClicked<span class="pl-pds">"</span></span>&gt;
+   &lt;/<span class="pl-ent">word</span><span class="pl-e">-cloud</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+        <h3>
+<a id="base-usage" class="anchor" href="#base-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Base usage</h3>
+        <p>Inject <code>angular-d3-word-cloud</code> into angular module, set up some options to our controller</p>
+        <div class="highlight highlight-source-js"><pre>    (<span class="pl-k">function</span>(){
+    <span class="pl-smi">angular</span>.<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>app<span class="pl-pds">'</span></span>,[<span class="pl-s"><span class="pl-pds">'</span>angular-d3-word-cloud<span class="pl-pds">'</span></span>])
+        .<span class="pl-en">controller</span>(<span class="pl-s"><span class="pl-pds">'</span>appController<span class="pl-pds">'</span></span>,[<span class="pl-s"><span class="pl-pds">'</span>$window<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>$element<span class="pl-pds">'</span></span>,appController])
+    <span class="pl-k">function</span> <span class="pl-en">appController</span>(<span class="pl-smi">$window</span>,<span class="pl-smi">$element</span>){
+        <span class="pl-k">var</span> self <span class="pl-k">=</span> <span class="pl-v">this</span>;
+        <span class="pl-smi">self</span>.<span class="pl-c1">height</span> <span class="pl-k">=</span> <span class="pl-smi">$window</span>.<span class="pl-c1">innerHeight</span> <span class="pl-k">*</span> <span class="pl-c1">0.5</span>;
+        <span class="pl-smi">self</span>.<span class="pl-c1">width</span> <span class="pl-k">=</span> <span class="pl-smi">$element</span>.<span class="pl-c1">find</span>(<span class="pl-s"><span class="pl-pds">'</span>word-cloud<span class="pl-pds">'</span></span>)[<span class="pl-c1">0</span>].<span class="pl-smi">offsetWidth</span>;
+        <span class="pl-smi">self</span>.<span class="pl-smi">wordClicked</span> <span class="pl-k">=</span> wordClicked;
+        <span class="pl-smi">self</span>.<span class="pl-smi">words</span> <span class="pl-k">=</span> [
+            {text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Angular<span class="pl-pds">'</span></span>,size<span class="pl-k">:</span> <span class="pl-c1">25</span>},
+            {text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Angular2<span class="pl-pds">'</span></span>,size<span class="pl-k">:</span> <span class="pl-c1">35</span>}
+        ]
+
+        <span class="pl-k">function</span> <span class="pl-en">wordClicked</span>(<span class="pl-smi">text</span>){
+            <span class="pl-en">alert</span>(text);
+        }
+    }
+})()</pre></div>
+        <h3>
+
+        <!--example-->
+
         <h3><a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3>
         <textarea class="form-control" rows="5" cols="80" placeholder="Please input some content..." ng-model="appCtrl.content">> </textarea>
         <p></p>
@@ -41,15 +95,42 @@
             <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" on-click="appCtrl.wordClicked">
             </word-cloud>
         </div>
+        <!--advance usage-->
         <h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
-        <p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-        <h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-        <p>You can <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/#mentioning-users-and-teams" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-        <h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
-        <p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+<a id="advance-usage" class="anchor" href="#advance-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advance usage</h3>
+        <h4>
+<a id="define-some-content-and-splitsg" class="anchor" href="#define-some-content-and-splitsg" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Define some content and split(/\s+/g)</h4>
+        <div class="highlight highlight-source-js"><pre>    <span class="pl-k">var</span> content <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Angular Angular2 Angular3 Express Nodejs<span class="pl-pds">'</span></span>;
+    originWords <span class="pl-k">=</span> <span class="pl-smi">self</span>.<span class="pl-c1">content</span>.<span class="pl-c1">split</span>(<span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">\s</span><span class="pl-k">+</span><span class="pl-pds">/</span>g</span>);
+    originWords <span class="pl-k">=</span> <span class="pl-smi">originWords</span>.<span class="pl-en">map</span>(<span class="pl-k">function</span>(<span class="pl-smi">word</span>) {
+        <span class="pl-k">return</span> {
+            text<span class="pl-k">:</span> word,
+            count<span class="pl-k">:</span> <span class="pl-c1">Math</span>.<span class="pl-c1">floor</span>(<span class="pl-c1">Math</span>.<span class="pl-c1">random</span>() <span class="pl-k">*</span> maxWordCount)
+        }
+     }).<span class="pl-c1">sort</span>(<span class="pl-k">function</span>(<span class="pl-smi">a</span>, <span class="pl-smi">b</span>) {
+          <span class="pl-k">return</span> <span class="pl-smi">b</span>.<span class="pl-smi">count</span> <span class="pl-k">-</span> <span class="pl-smi">a</span>.<span class="pl-smi">count</span>;
+     })</pre></div>
+        <h4>
+<a id="compute-word-size" class="anchor" href="#compute-word-size" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compute word size</h4>
+        <div class="highlight highlight-source-js"><pre>     <span class="pl-k">var</span> element <span class="pl-k">=</span> <span class="pl-smi">$element</span>.<span class="pl-c1">find</span>(<span class="pl-s"><span class="pl-pds">'</span>#wordsCloud<span class="pl-pds">'</span></span>);
+     <span class="pl-k">var</span> height <span class="pl-k">=</span> <span class="pl-smi">$window</span>.<span class="pl-c1">innerHeight</span> <span class="pl-k">*</span> <span class="pl-c1">0.75</span>;
+     <span class="pl-smi">element</span>.<span class="pl-c1">height</span>(height);
+     <span class="pl-k">var</span> width <span class="pl-k">=</span> element[<span class="pl-c1">0</span>].<span class="pl-smi">offsetWidth</span>;
+     <span class="pl-k">var</span> maxCount <span class="pl-k">=</span> originWords[<span class="pl-c1">0</span>].<span class="pl-smi">count</span>;
+     <span class="pl-k">var</span> minCount <span class="pl-k">=</span> originWords[<span class="pl-smi">originWords</span>.<span class="pl-c1">length</span> <span class="pl-k">-</span> <span class="pl-c1">1</span>].<span class="pl-smi">count</span>;
+     <span class="pl-k">var</span> maxWordSize <span class="pl-k">=</span> width <span class="pl-k">*</span> <span class="pl-c1">0.15</span>;
+     <span class="pl-k">var</span> minWordSize <span class="pl-k">=</span> maxWordSize <span class="pl-k">/</span> <span class="pl-c1">5</span>;
+     <span class="pl-k">var</span> spread <span class="pl-k">=</span> maxCount <span class="pl-k">-</span> minCount;
+     <span class="pl-k">if</span> (spread <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>) spread <span class="pl-k">=</span> <span class="pl-c1">1</span>;
+     <span class="pl-k">var</span> step <span class="pl-k">=</span> (maxWordSize <span class="pl-k">-</span> minWordSize) <span class="pl-k">/</span> spread;
+     <span class="pl-smi">self</span>.<span class="pl-smi">words</span> <span class="pl-k">=</span> <span class="pl-smi">originWords</span>.<span class="pl-en">map</span>(<span class="pl-k">function</span>(<span class="pl-smi">word</span>) {
+         <span class="pl-k">return</span> {
+             text<span class="pl-k">:</span> <span class="pl-smi">word</span>.<span class="pl-c1">text</span>,
+             size<span class="pl-k">:</span> <span class="pl-c1">Math</span>.<span class="pl-c1">round</span>(maxWordSize <span class="pl-k">-</span> ((maxCount <span class="pl-k">-</span> <span class="pl-smi">word</span>.<span class="pl-smi">count</span>) <span class="pl-k">*</span> step))
+         }
+     })
+     <span class="pl-smi">self</span>.<span class="pl-c1">width</span> <span class="pl-k">=</span> width;
+     <span class="pl-smi">self</span>.<span class="pl-c1">height</span> <span class="pl-k">=</span> height;</pre></div>
         <footer class="site-footer">
             <span class="site-footer-owner"><a href="https://github.com/weihanchen/angular-d3-word-cloud">Angular-d3-word-cloud</a> is maintained by <a href="https://github.com/weihanchen">weihanchen</a>.</span>
             <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
