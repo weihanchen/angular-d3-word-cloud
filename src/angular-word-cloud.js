@@ -93,7 +93,7 @@
             }
 
             function watchListener(newVal, oldVal) {
-                var parameters = newVal;
+                var parameters = angular.copy(newVal);
                 if (angular.isUndefined(parameters.words) || angular.isUndefined(parameters.width) || angular.isUndefined(parameters.height)) return;
                 updateLayout(parameters.width, parameters.height, parameters.words)
             }

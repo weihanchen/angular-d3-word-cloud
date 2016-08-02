@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular-d3-word-cloud by weihanchen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" href="css/plugins/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/plugins/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/github-light.css" media="screen">
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/plugins/angular.min.js"></script>
+    <script src="js/plugins/d3.min.js"></script>
+    <script src="js/plugins/d3.layout.cloud.js"></script>
+    <script src="js/controllers/app.js"></script>
+    <script src="dist/angular-word-cloud.min.js"></script>
+</head>
+
+<body ng-controller="appController as appCtrl">
+    <section class="page-header">
+        <h1 class="project-name">Angular-d3-word-cloud</h1>
+        <h2 class="project-tagline"></h2>
+        <a href="https://github.com/weihanchen/angular-d3-word-cloud" class="btn">View on GitHub</a>
+        <a href="https://github.com/weihanchen/angular-d3-word-cloud/zipball/master" class="btn">Download .zip</a>
+        <a href="https://github.com/weihanchen/angular-d3-word-cloud/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+    <section class="main-content">
+        <h3>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic Usage</h3>
+        <div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">meta</span> <span class="pl-e">charset</span>=<span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>&gt;  <span class="pl-c">&lt;!-- it's important for d3.js --&gt;</span>
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>js/plugins/angular.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>js/plugins/d3.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>dist/angular-word-cloud.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+        <h3><a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3>
+        <textarea class="form-control" rows="5" cols="80" placeholder="Please input some content..." ng-model="appCtrl.content">> </textarea>
+        <p></p>
+        <button class="btn-sm" ng-click="appCtrl.generateWords()"><i class="fa fa-cloud" aria-hidden="true"></i> Generate</button>
+        <div id="wordsCloud">
+            <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" on-click="appCtrl.wordClicked">
+            </word-cloud>
+        </div>
+        <h3>
+<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
+        <p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+        <h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+        <p>You can <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/#mentioning-users-and-teams" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+        <h3>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+        <p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+        <footer class="site-footer">
+            <span class="site-footer-owner"><a href="https://github.com/weihanchen/angular-d3-word-cloud">Angular-d3-word-cloud</a> is maintained by <a href="https://github.com/weihanchen">weihanchen</a>.</span>
+            <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+        </footer>
+    </section>
+</body>
+
+</html>
