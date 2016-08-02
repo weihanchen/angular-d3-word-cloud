@@ -5,19 +5,17 @@ var clean = require('gulp-clean'),
     uglify = require('gulp-uglify');
 
 gulp.task('js', function() {
-    return gulp.src(['bower_components/bootstrap/dist/js/bootstrap.min.js',
-            'bower_components/jquery/dist/jquery.min.js', 'bower_components/angular/angular.min.js',
+    return gulp.src(['bower_components/jquery/dist/jquery.min.js', 'bower_components/angular/angular.min.js',
             'bower_components/d3/d3.min.js','bower_components/d3-cloud/build/d3.layout.cloud.js'
         ])
         .pipe(gulp.dest('examples/js/plugins'));
 });
 gulp.task('css', function() {
-    return gulp.src(['bower_components/bootstrap/dist/css/bootstrap.min.css',
-        'bower_components/font-awesome/css/font-awesome.min.css'
+    return gulp.src(['bower_components/font-awesome/css/font-awesome.min.css'
     ]).pipe(gulp.dest('examples/css/plugins'));
 });
 gulp.task('fonts', function() {
-    return gulp.src(['bower_components/bootstrap/dist/fonts/*', 'bower_components/font-awesome/fonts/*']).pipe(gulp.dest('examples/css/fonts'));
+    return gulp.src(['bower_components/font-awesome/fonts/*']).pipe(gulp.dest('examples/css/fonts'));
 })
 gulp.task('cleanBowerFiles', ['js', 'css', 'fonts'], function() {
     return gulp.src('bower_components').pipe(clean({ force: true }));

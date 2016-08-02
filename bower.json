@@ -10,7 +10,6 @@
   "private": true,
   "dependencies": {
     "angular": "^1.x",
-    "bootstrap": "^3.3.6",
     "d3": "^3.3.13",
     "d3-cloud": "^1.2.2",
     "font-awesome": "^4.6.3",
