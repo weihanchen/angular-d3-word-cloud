@@ -31,7 +31,7 @@ Add dependencies to the <head> section of your index html:
 * `width=[number]`
 * `on-click=[function]` -> word clicked callback
 
-## Directive Usage ## 
+## Directive Usage ##
 ```html
 <div id="wordsCloud">
    <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" on-click="appCtrl.wordClicked">
@@ -39,7 +39,7 @@ Add dependencies to the <head> section of your index html:
 </div>
 ```
 
-## Base usage ##
+## Basic usage ##
 Inject `angular-d3-word-cloud` into angular module, set up some options to our controller
 
 ```javascript
