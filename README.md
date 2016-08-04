@@ -62,7 +62,7 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
 	}
 })()
 ```
-## Advance usage ##
+## Advanced usage ##
 ### Define some content and split(/\s+/g) ###
 
 ```javascript
@@ -78,7 +78,7 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
      })
 ```
 
-### Compute word size ###
+### Font size calculations ###
 
 ```javascript
 	 var element = $element.find('#wordsCloud');
