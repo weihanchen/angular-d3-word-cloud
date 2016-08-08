@@ -101,3 +101,6 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
      self.width = width;
      self.height = height;
 ```
+
+## References ##
+* [Word Cloud Layout](https://github.com/jasondavies/d3-cloud) by [Jason Davies](https://www.jasondavies.com/).
