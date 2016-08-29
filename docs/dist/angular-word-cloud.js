@@ -49,7 +49,7 @@
                     .data(words)
                     .enter().append("text")
                     .on("click", function(d) {//call back clicked text
-                        if (self.onClick) self.onClick(d.text);
+                        if (self.onClick) self.onClick(d);
                     })
                     .on("mouseover", function() {//zoom in font-size
                         d3.select(this).transition().style("font-size", function(d) {

@@ -54,8 +54,8 @@
             })
         }
 
-        function wordClicked(text) {
-            alert(text);
+        function wordClicked(word) {
+            alert('text: ' + word.text + ',count: ' + word.count);
         }
     }
 })()

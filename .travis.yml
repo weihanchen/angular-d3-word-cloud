@@ -11,4 +11,5 @@ script:
   - npm run test
   - npm run gulp
 cache:
-  - node_modules
+  directories:
+    - node_modules
