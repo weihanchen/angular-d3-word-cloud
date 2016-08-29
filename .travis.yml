@@ -7,9 +7,7 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - npm install
   - npm run bower install
+  - ls /home/travis/build/weihanchen/angular-d3-word-cloud/bower_components
 script:
   - npm run test
   - npm run gulp
-cache:
-  directories:
-    - node_modules
