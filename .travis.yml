@@ -13,4 +13,3 @@ script:
 cache:
   directories:
     - node_modules
-    - bower_compoments
