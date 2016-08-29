@@ -36,7 +36,7 @@ describe('word cloud directive testing...', function() {
             it('should remove last word from the list', function() {
 				$rootScope.$apply(function() { $rootScope.words.splice($rootScope.words.length - 1,1); });
 				var wordElements = element.find('text');
-                expect(wordElements.length).toBe(0);
+                expect(wordElements.length).toBe($rootScope.words.length);
 			});
 			// it('should send the word with the click', function() {
 			// 	console.log(element.find('text')[0])
