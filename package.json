@@ -18,7 +18,7 @@
     },
     "scripts": {
         "bower": "bower",
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "./node_modules/.bin/karma start",
         "product": "node run.js",
         "gulp": "gulp",
         "karma": "karma"

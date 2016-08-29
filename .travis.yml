@@ -2,10 +2,12 @@ laguange: node_js
 node_js:
   - '6.5.0'
 before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
   - npm install
   - npm run bower install
 script:
-  - npm run karma start
+  - npm run test
   - npm run gulp
 cache:
   - node_modules
