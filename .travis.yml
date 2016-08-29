@@ -7,3 +7,5 @@ before_script:
 script:
   - npm run karma start
   - npm run gulp
+cache:
+  - node_modules

@@ -30,5 +30,5 @@ gulp.task('toDist', function() {
         .pipe(gulp.dest('examples/dist'))
 });
 
-gulp.task('default', ['js', 'css', 'fonts','toDist', 'cleanBowerFiles']); release version
+gulp.task('default', ['js', 'css', 'fonts','toDist', 'cleanBowerFiles']); //release version
 // gulp.task('default', ['js', 'css', 'fonts','toDist']); //development version
