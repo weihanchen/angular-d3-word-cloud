@@ -1,10 +1,8 @@
 // Karma configuration
 // Generated on Mon Aug 29 2016 16:34:32 GMT+0800 (台北標準時間)
-if (process.env.TRAVIS) {
-    configuration.browsers = ['Chrome_travis_ci'];
-}
+
 module.exports = function(config) {
-    config.set({
+    var configuration = {
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: '',
@@ -70,5 +68,9 @@ module.exports = function(config) {
         // Concurrency level
         // how many browser should be started simultaneous
         concurrency: Infinity
-    })
+    }
+    if (process.env.TRAVIS) {
+        configuration.browsers = ['Chrome_travis_ci'];
+    }
+    config.set(configuration)
 }
