@@ -1,5 +1,7 @@
 # angular-d3-word-cloud #
 
+[![Build Status](https://travis-ci.org/weihanchen/angular-d3-word-cloud.svg?branch=master)](https://travis-ci.org/weihanchen/angular-d3-word-cloud)
+
 ## Run examples with server ##
 * bower install
 * npm install 
