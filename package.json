@@ -4,17 +4,24 @@
     "main": ["dist/angular-d3-word-cloud.js"],
     "node-main": "./run.js",
     "dependencies": {
+        "bower": "^1.7.9",
         "express": "^4.14.0",
         "gulp": "^3.9.1",
         "gulp-clean": "^0.3.2",
         "gulp-concat": "^2.6.0",
         "gulp-ng-annotate": "^1.1.0",
-        "gulp-uglify": "^1.5.3"
+        "gulp-uglify": "^1.5.3",
+        "karma": "^1.2.0",
+        "karma-jasmine": "^1.0.2",
+        "jasmine-core": "^2.4.1",
+        "karma-chrome-launcher": "^2.0.0"
     },
     "scripts": {
+        "bower": "bower",
         "test": "echo \"Error: no test specified\" && exit 1",
         "product": "node run.js",
-        "gulp": "gulp"
+        "gulp": "gulp",
+        "karma": "karma"
     },
     "author": "will.chen",
     "license": "MIT"
