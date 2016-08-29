@@ -1,0 +1,11 @@
+laguange: node_js
+node_js:
+  - '6.5.0'
+before_script:
+  - npm install -g karma
+  - npm install -g jasmine-core
+  - npm install -g bower
+  - bower install
+script:
+  - karma start --no-auto-watch --single-run --reporters dots  karma.conf.js
+  - npm run gulp

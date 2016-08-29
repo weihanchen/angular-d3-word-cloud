@@ -1,10 +1,11 @@
 # angular-d3-word-cloud #
 
-## Run with server ##
+## Run examples with server ##
 * bower install
 * npm install 
 * npm run gulp
 * node run.js
+* default port 8000
 
 ## Dependencies ##
 * [d3.js](https://d3js.org/)
