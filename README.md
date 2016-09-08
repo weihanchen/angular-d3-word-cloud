@@ -59,8 +59,8 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
 			{text: 'Angular2',size: 35}
 		]
 
-		function wordClicked(text){
-			alert(text);
+		function wordClicked(word){
+			alert('text: ' + word.text + ',count: ' + word.count);
 		}
 	}
 })()
