@@ -10,6 +10,7 @@
 * default port 8000
 
 ## Dependencies ##
+* [angular.js](https://angularjs.org/)
 * [d3.js](https://d3js.org/)
 * [d3.layout.cloud.js](https://www.jasondavies.com/wordcloud/)
 
@@ -17,16 +18,28 @@
 Watch the wordcloud component in action on the [demo page](https://weihanchen.github.io/angular-d3-word-cloud/).
 
 ## How to use ##
+
+### Install ###
+
+##### bower #####
+
+    $ bower install angular-d3-word-cloud
+
+[angular.js](https://angularjs.org/), [d3.js](https://d3js.org/), [d3.layout.cloud.js](https://www.jasondavies.com/wordcloud/) would be install as dependencies auto. If it won't for some error, install it manually.
+
+    $ bower install angular
+    $ bower install d3
+    $ bower install d3-cloud
+
 Add dependencies to the <head> section of your index html:
 
 ```html
 <meta charset="utf-8">  <!-- it's important for d3.js -->
-<script src="js/plugins/jquery.min.js"></script>
-<script src="js/plugins/angular.min.js"></script>
-<script src="js/plugins/d3.min.js"></script>
-<script src="js/plugins/d3.layout.cloud.js"></script>
-<script src="js/controllers/app.js"></script>
-<script src="dist/angular-word-cloud.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/d3/d3.min.js"></script>
+<script src="bower_components/d3-cloud/build/d3.layout.cloud.js"></script>
+<script src="bower_components/angular-d3-word-cloud/dist/angular-word-cloud.min.js"></script>
 ```
 ## Options ##
 * `words=[array]` -> [{text: '',size: 0}]
