@@ -1,29 +1,33 @@
 {
-  "name": "angular-d3-word-cloud",
-  "description": "An AngularJS directive for angular-d3-word-cloud.js base on d3.js",
-  "main": ["dist/angular-d3-word-cloud.js"],
-  "authors": [
-    "will.chen"
-  ],
-  "license": "MIT",
-  "homepage": "",
-  "private": true,
-  "dependencies": {
-    "angular": "^1.x",
-    "angular-mocks": "^1.5.9",
-    "d3": "^3.3.13",
-    "d3-cloud": "^1.2.2",
-    "font-awesome": "^4.6.3",
-    "jquery": "^1.11.0"
-  },
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "src",
-    "test",
-    "tests",
-    "lib",
-    "examples"
-  ]
+    "name": "angular-d3-word-cloud",
+    "version": "0.0.1",
+    "description": "An AngularJS directive for angular-d3-word-cloud.js base on d3.js",
+    "main": ["dist/angular-d3-word-cloud.js"],
+    "authors": [
+        "will.chen"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/weihanchen/angular-d3-word-cloud.git"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "angular": "^1.x",
+        "angular-mocks": "^1.5.9",
+        "d3": "^3.3.13",
+        "d3-cloud": "^1.2.2",
+        "font-awesome": "^4.6.3",
+        "jquery": "^1.11.0"
+    },
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "src",
+        "test",
+        "tests",
+        "lib",
+        "examples"
+    ],
+    "private": false
 }
