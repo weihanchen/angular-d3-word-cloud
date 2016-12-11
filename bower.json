@@ -1,6 +1,6 @@
 {
     "name": "angular-d3-word-cloud",
-    "version": "0.0.1",
+    "version": "0.1.1",
     "description": "An AngularJS directive for angular-d3-word-cloud.js base on d3.js",
     "main": ["dist/angular-d3-word-cloud.js"],
     "authors": [
@@ -21,13 +21,18 @@
     },
     "ignore": [
         "**/.*",
+        "docs",
         "node_modules",
         "bower_components",
         "src",
         "test",
         "tests",
         "lib",
-        "examples"
+        "examples",
+        "gulpfile.js",
+        "karma.conf.js",
+        "package.json",
+        "run.js"
     ],
     "private": false
 }
