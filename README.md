@@ -3,11 +3,13 @@
 [![Build Status](https://travis-ci.org/weihanchen/angular-d3-word-cloud.svg?branch=master)](https://travis-ci.org/weihanchen/angular-d3-word-cloud)
 
 ## Run examples with server ##
-* bower install
-* npm install 
-* npm run gulp
-* node run.js
-* default port 8000
+```
+$ bower install
+$ npm install
+$ npm run gulp
+$ npm run test
+$ npm run product //default server port is 8000
+```
 
 ## Dependencies ##
 * [angular.js](https://angularjs.org/)
@@ -73,7 +75,7 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
 		]
 
 		function wordClicked(word){
-			alert('text: ' + word.text + ',count: ' + word.count);
+			alert('text: ' + word.text + ',size: ' + word.size);
 		}
 	}
 })()

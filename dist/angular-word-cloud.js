@@ -13,13 +13,13 @@
                 onClick: '='
             },
             template: '<div></div>',
-            controller: ['$scope','$element', wordsCloudController],
+            controller: ['$scope', '$element', wordsCloudController],
             controllerAs: 'wordsCloudCtrl',
             bindToController: true
         };
 
         function wordsCloudController($scope, $element) {
-        	var self = this;
+            var self = this;
             var fill = d3.scale.category20();
             /**
              * layout grnerator by d3 and use drawListener to generator word cloud.
@@ -34,24 +34,26 @@
                     return d.size;
                 })
                 .on("end", drawListener);
-            
+
             $scope.$watch(watchParameters, watchListener, true);
 
             function drawListener(words) {
                 var wordsCloudSVGDiv = d3.select($element[0]);
+                var width = layout.size()[0];
+                var height = layout.size()[1];
                 wordsCloudSVGDiv.select('svg').remove();
                 wordsCloudSVGDiv.append('svg')
-                    .attr("width", layout.size()[0])
-                    .attr("height", layout.size()[1])
+                    .attr("width", width)
+                    .attr("height", height)
                     .append("g")
-                    .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+                    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
                     .selectAll("text")
                     .data(words)
                     .enter().append("text")
-                    .on("click", function(d) {//call back clicked text
+                    .on("click", function(d) { //call back clicked element
                         if (self.onClick) self.onClick(d);
                     })
-                    .on("mouseover", function() {//zoom in font-size
+                    .on("mouseover", function() { //zoom in font-size
                         d3.select(this).transition().style("font-size", function(d) {
                             return d.size * 1.2 + 'px';
                         }).attr('opacity', 0.5)

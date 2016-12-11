@@ -55,7 +55,7 @@
         }
 
         function wordClicked(word) {
-            alert('text: ' + word.text + ',count: ' + word.count);
+            alert('text: ' + word.text + ',size: ' + word.size);
         }
     }
 })()
