@@ -4,19 +4,19 @@
     "main": ["dist/angular-d3-word-cloud.js"],
     "node-main": "./run.js",
     "dependencies": {
-        "express": "^4.14.0",
-        "gulp": "^3.9.1",
-        "gulp-clean": "^0.3.2",
-        "gulp-concat": "^2.6.0",
-        "gulp-ng-annotate": "^1.1.0",
-        "gulp-uglify": "^1.5.3"
+        "express": "~4.14.0",
+        "gulp": "~3.9.1",
+        "gulp-clean": "~0.3.2",
+        "gulp-concat": "~2.6.0",
+        "gulp-ng-annotate": "~1.1.0",
+        "gulp-uglify": "~1.5.3"
     },
     "devDependencies": {
-        "jasmine-core": "^2.4.1",
-        "karma": "^1.2.0",
-        "karma-chrome-launcher": "^2.0.0",
-        "karma-jasmine": "^1.0.2",
-        "karma-mocha-reporter": "^2.0.0"
+        "jasmine-core": "~2.4.1",
+        "karma": "~1.2.0",
+        "karma-chrome-launcher": "~2.0.0",
+        "karma-jasmine": "~1.0.2",
+        "karma-mocha-reporter": "~2.0.0"
     },
     "scripts": {
         "bower": "bower",

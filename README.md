@@ -6,8 +6,8 @@
 ```
 $ bower install
 $ npm install
-$ npm run gulp
 $ npm run test
+$ npm run gulp
 $ npm run product //default server port is 8000
 ```
 
