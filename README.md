@@ -67,7 +67,7 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
 	function appController($window,$element){
 		var self = this;
 		self.height = $window.innerHeight * 0.5;
-		self.width = $element.find('word-cloud')[0].offsetWidth;
+		self.width = $element.find('#wordsCloud')[0].offsetWidth;
 		self.wordClicked = wordClicked;
 		self.words = [
 			{text: 'Angular',size: 25},
