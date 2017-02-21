@@ -4,11 +4,10 @@
 
 ## Run examples with server ##
 ```
-$ bower install
 $ npm install
 $ npm run test
-$ npm run gulp
-$ npm run product //default server port is 8000
+$ npm run dev //default server port is 8000
+$ npm run release //build release files
 ```
 
 ## Dependencies ##

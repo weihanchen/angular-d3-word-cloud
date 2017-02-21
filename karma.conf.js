@@ -1,77 +1,92 @@
-// Karma configuration
-// Generated on Mon Aug 29 2016 16:34:32 GMT+0800 (台北標準時間)
+'use strict';
 
 module.exports = function(config) {
-    var configuration = {
+   var configuration = {
 
-        // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
+      // base path that will be used to resolve all patterns (eg. files, exclude)
+      basePath: '',
 
-        // frameworks to use
-        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['jasmine'],
-
-
-        // list of files / patterns to load in the browser
-        files: [
-            //libraries
-            'bower_components/jquery/dist/jquery.min.js',
-            'bower_components/angular/angular.min.js',
-            'bower_components/angular-mocks/angular-mocks.js',
-            'bower_components/d3/d3.min.js',
-            'bower_components/d3-cloud/build/d3.layout.cloud.js',
-            //our directive
-            'src/angular-word-cloud.js',
-            //tests
-            'test/*.js'
-        ],
-
-        // test results reporter to use
-        // possible values: 'dots', 'progress'
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['mocha'],
+      // frameworks to use
+      // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+      frameworks: ['jasmine'],
 
 
-        // web server port
-        port: 9876,
+      // list of files / patterns to load in the browser
+      files: [
+         //libraries
+         'node_modules/jquery/dist/jquery.min.js',
+         'node_modules/angular/angular.min.js',
+         'node_modules/angular-mocks/angular-mocks.js',
+         'node_modules/d3/build/d3.min.js',
+         'node_modules/d3-cloud/build/d3.layout.cloud.js',
+         //our directive
+         'src/angular-word-cloud.js',
+         //tests
+         'test/*.spec.js'
+      ],
+
+      preprocessors: {
+         'src/*.js': ['coverage']
+      },
+
+      coverageReporter: {
+         type: 'lcov',
+         dir: 'coverage/'
+      },
+
+      // test results reporter to use
+      // possible values: 'dots', 'progress'
+      // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+      reporters: ['mocha', 'coverage'],
+
+      mochaReporter: {
+         output: 'minimal'
+      },
 
 
-        // enable / disable colors in the output (reporters and logs)
-        colors: true,
+      // web server port
+      port: 9876,
 
 
-        // level of logging
-        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
+      // enable / disable colors in the output (reporters and logs)
+      colors: true,
 
 
-        // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: true,
+      // level of logging
+      // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+      logLevel: config.LOG_INFO,
 
 
-        // start these browsers
-        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Chrome'],
+      // enable / disable watching file and executing tests whenever any file changes
+      autoWatch: true,
 
-        // run with travis ci
 
-        customLaunchers: {
-            Chrome_travis_ci: {
-                base: 'Chrome',
-                flags: ['--no-sandbox']
-            }
-        },
+      // start these browsers
+      // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+      browsers: ['PhantomJS'],
 
-        // Continuous Integration mode
-        // if true, Karma captures browsers, runs the tests and exits
-        singleRun: true,
+      // If browser does not capture in given timeout [ms], kill it
+      captureTimeout: 60000,
 
-        // Concurrency level
-        // how many browser should be started simultaneous
-        concurrency: Infinity
-    }
-    if (process.env.TRAVIS) {
-        configuration.browsers = ['Chrome_travis_ci'];
-    }
-    config.set(configuration)
+      // run with travis ci
+      // customLaunchers: {
+      //    Chrome_travis_ci: {
+      //       base: 'Chrome',
+      //       flags: ['--no-sandbox']
+      //    }
+      // },
+
+      // Continuous Integration mode
+      // if true, Karma captures browsers, runs the tests and exits
+      singleRun: true,
+
+      // Concurrency level
+      // how many browser should be started simultaneous
+      concurrency: Infinity
+   }
+   if (process.env.TRAVIS) {
+      // configuration.browsers = ['Chrome_travis_ci'];
+      configuration.mochaReporter.output = 'full';
+   }
+   config.set(configuration)
 }

@@ -4,7 +4,7 @@
     "description": "An AngularJS directive for angular-d3-word-cloud.js base on d3.js",
     "main": ["dist/angular-d3-word-cloud.js"],
     "authors": [
-        "will.chen"
+        "weihanchen"
     ],
     "repository": {
         "type": "git",
@@ -13,10 +13,8 @@
     "license": "MIT",
     "dependencies": {
         "angular": "~1.x",
-        "angular-mocks": "~1.5.9",
-        "d3": "~3.3.13",
-        "d3-cloud": "~1.2.2",
-        "font-awesome": "~4.6.3",
+        "d3": "~4.6.0",
+        "d3-cloud": "~1.2.4",
         "jquery": "~1.12.4"
     },
     "ignore": [
