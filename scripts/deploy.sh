@@ -19,7 +19,7 @@ git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 git clean -fxd
 cd ../
 cp -r docs/* $TARGET_FOLDER
-cp readme.md  $TARGET_FOLDER
+cp *.md  $TARGET_FOLDER
 cd $TARGET_FOLDER
 git add .
 MESSAGE=`date +\ %Y-%m-%d\ %H:%M:%S`
