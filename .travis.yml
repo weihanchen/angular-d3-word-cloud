@@ -7,3 +7,17 @@ before_script:
 script:
   - npm run test
   - npm run release
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: bash scripts/deploy.sh
+
+branches:
+  only:
+    - master
+
+notification:
+  email:
+    - ${GITHUB_MAIL}
+  on_success: always
