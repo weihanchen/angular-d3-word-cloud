@@ -40,7 +40,7 @@ module.exports = function(config) {
       reporters: ['mocha', 'coverage'],
 
       mochaReporter: {
-         output: 'minimal'
+         output: 'full'
       },
 
 
@@ -84,9 +84,8 @@ module.exports = function(config) {
       // how many browser should be started simultaneous
       concurrency: Infinity
    }
-   if (process.env.TRAVIS) {
-      // configuration.browsers = ['Chrome_travis_ci'];
-      configuration.mochaReporter.output = 'full';
-   }
+  //  if (process.env.TRAVIS) {
+  //     configuration.mochaReporter.output = 'full';
+  //  }
    config.set(configuration)
 }
