@@ -28,6 +28,7 @@
 
       function wordsCloudController($scope, $element) {
          var self = this;
+         /* istanbul ignore next */
          var fill = (d3.hasOwnProperty('scale')) ? d3.scale.category20() : d3.scaleOrdinal(d3.schemeCategory20);
          /**
           * layout grnerator by d3 and use drawListener to generator word cloud.
