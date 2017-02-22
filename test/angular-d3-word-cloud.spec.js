@@ -9,19 +9,31 @@ describe('angular-d3-word-cloud directive', function() {
       $timeout = _$timeout_;
    }));
 
+   function dispatchEventToWord(index, eventType) {
+      var words = d3.select(element[0]).select('svg').selectAll('text');
+      var word = words.nodes()[index];
+      return d3.select(word).dispatch(eventType);
+   }
+
+   function flushAllD3Transitions() {
+      var now = Date.now;
+      Date.now = function() {
+         return Infinity;
+      };
+      d3.timerFlush();
+      Date.now = now;
+   }
+
    function getElements() {
       return element.find('text');
    }
 
-   function dispatchEventToWord(index, eventType) {
+   function getWordStyle(index, style) {
       var words = d3.select(element[0]).select('svg').selectAll('text');
-      return words.each(function(d, i) {
-         if (i === index) {
-            var self = this;
-            d3.select(self).dispatch(eventType);
-         }
-      })
+      var word = words.nodes()[index];
+      return $(word).css(style);
    }
+
 
    describe('basic feature', function() {
       beforeEach(function() {
@@ -44,6 +56,15 @@ describe('angular-d3-word-cloud directive', function() {
          spyOn($rootScope, 'wordClicked').and.callThrough();
          $rootScope.$digest();
       })
+      it('dose not rendered the elements when not pass width、height paramters', function() {
+         //Act
+         element = $compile("<word-cloud on-click='wordClicked'></word-cloud>")($rootScope);
+         $rootScope.$digest();
+        var wordElements = getElements();
+         //Assert
+         expect(wordElements.length).toBe(0);
+      })
+
       it('should add the elements to the dom', function() {
          //Act
          var wordElements = getElements();
@@ -84,6 +105,7 @@ describe('angular-d3-word-cloud directive', function() {
       it('dose not call wordClicked if not binding onClick', function() {
          //Arrange
          element = $compile("<word-cloud words='words' width='width' height='height'></word-cloud>")($rootScope);
+         $rootScope.$digest();
          //Act
          dispatchEventToWord(0, 'click');
          $rootScope.$apply();
@@ -91,12 +113,34 @@ describe('angular-d3-word-cloud directive', function() {
          expect($rootScope.wordClicked).not.toHaveBeenCalled();
       })
 
-      // it('shoud zoom in word size when mouseover', function() {
-      //    //Act
-      //    dispatchEventToWord(0, 'mouseover');
-      //    $rootScope.$apply();
-      //    //Assert
-      //    var t = d3.select(element[0]).select('svg').select('text');
-      // })
+      it('shoud word size greater then origin size when mouseover', function() {
+         //Arrange
+         var sourceWordSize = $rootScope.words[0].size;
+
+         //Act
+         dispatchEventToWord(0, 'mouseover');
+         flushAllD3Transitions();
+         var currentFontSize = getWordStyle(0, 'font-size');
+         currentFontSize = parseInt(currentFontSize.replace('px', ''));
+
+         //Assert
+         expect(currentFontSize).toBeGreaterThan(sourceWordSize);
+      })
+
+      it('should word size equal with origin size when zoom in and out', function() {
+         //Arrange
+         var sourceWordSize = $rootScope.words[0].size;
+
+         //Act
+         dispatchEventToWord(0, 'mouseover');
+         flushAllD3Transitions();
+         dispatchEventToWord(0, 'mouseout');
+         flushAllD3Transitions();
+         var currentFontSize = getWordStyle(0, 'font-size');
+         currentFontSize = parseInt(currentFontSize.replace('px', ''));
+
+         //Assert
+         expect(sourceWordSize).toEqual(currentFontSize);
+      })
    })
 })
