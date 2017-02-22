@@ -37,7 +37,7 @@ module.exports = function(config) {
       // test results reporter to use
       // possible values: 'dots', 'progress'
       // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-      reporters: ['coverage', 'mocha'],
+      reporters: ['mocha', 'coverage'],
 
       mochaReporter: {
          output: 'full'
@@ -84,8 +84,8 @@ module.exports = function(config) {
       // how many browser should be started simultaneous
       concurrency: Infinity
    }
-  //  if (process.env.TRAVIS) {
-  //     configuration.mochaReporter.output = 'full';
-  //  }
+   if (process.env.TRAVIS) {
+      configuration.reporters.push('coveralls');
+   }
    config.set(configuration)
 }

@@ -42,6 +42,7 @@
         "karma": "~1.2.0",
         "karma-chrome-launcher": "~2.0.0",
         "karma-coverage": "~1.1.1",
+        "karma-coveralls": "~1.1.2",
         "karma-phantomjs-launcher": "~1.0.2",
         "karma-jasmine": "~1.0.2",
         "karma-mocha-reporter": "~2.0.0",
@@ -49,7 +50,7 @@
     },
     "scripts": {
         "test": "./node_modules/.bin/karma start",
-        "release": "karma start --reporters dots,coverage && gulp",
+        "release": "karma start && gulp",
         "dev": "gulp && node run.js"
     },
     "author": "will.chen"
