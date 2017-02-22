@@ -33,16 +33,24 @@ Watch the wordcloud component in action on the [demo page](https://weihanchen.gi
     $ bower install d3
     $ bower install d3-cloud
 
+
+##### npm #####
+```
+$ npm install angular-d3-word-cloud
+```
+
+## Inject scripts ##
 Add dependencies to the <head> section of your index html:
 
 ```html
 <meta charset="utf-8">  <!-- it's important for d3.js -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/d3/d3.min.js"></script>
-<script src="bower_components/d3-cloud/build/d3.layout.cloud.js"></script>
-<script src="bower_components/angular-d3-word-cloud/dist/angular-word-cloud.min.js"></script>
+<script src="[bower_components/node_modules]/jquery/dist/jquery.min.js"></script>
+<script src="[bower_components/node_modules]/angular/angular.min.js"></script>
+<script src="[bower_components/node_modules]/d3/d3.min.js"></script>
+<script src="[bower_components/node_modules]/d3-cloud/build/d3.layout.cloud.js"></script>
+<script src="[bower_components/node_modules]/angular-d3-word-cloud/dist/angular-word-cloud.min.js"></script>
 ```
+
 ## Options ##
 * `words=[array]` -> [{text: '',size: 0}]
 * `height=[number]`
