@@ -1,6 +1,7 @@
 # angular-d3-word-cloud #
 
 [![Build Status](https://travis-ci.org/weihanchen/angular-d3-word-cloud.svg?branch=master)](https://travis-ci.org/weihanchen/angular-d3-word-cloud)
+[![Coverage Status](https://coveralls.io/repos/github/weihanchen/angular-d3-word-cloud/badge.svg?branch=master)](https://coveralls.io/github/weihanchen/angular-d3-word-cloud?branch=master)
 
 ## Run examples with server ##
 ```
