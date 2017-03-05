@@ -1,5 +1,5 @@
 {
-    "name": "angular-d3-word-cloud-server",
+    "name": "angular-d3-word-cloud",
     "description": "Running example base on express server",
     "version": "0.2.0",
     "license": "MIT",
