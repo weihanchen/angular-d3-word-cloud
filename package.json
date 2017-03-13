@@ -53,7 +53,7 @@
    },
    "scripts": {
       "esLint:init": "./node_modules/.bin/eslint --init",
-      "esLint:start": "eslint gulpfile.js karma.config.js src/*.js test/*.js docs/js/controllers/*.js",
+      "esLint:start": "./node_modules/.bin/eslint gulpfile.js karma.config.js src/*.js test/*.js docs/js/controllers/*.js",
       "test": "./node_modules/.bin/karma start",
       "release": "npm run esLint:start && karma start && gulp",
       "dev": "gulp && node run.js"

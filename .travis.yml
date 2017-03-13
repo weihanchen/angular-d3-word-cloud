@@ -3,20 +3,15 @@ node_js:
   - '6.5.0'
 before_script:
   - npm install
-
 script:
-  - npm run test
   - npm run release
-
 deploy:
   provider: script
   skip_cleanup: true
   script: bash scripts/deploy.sh
-
 branches:
   only:
     - master
-
 notification:
   email:
     - ${GITHUB_MAIL}
