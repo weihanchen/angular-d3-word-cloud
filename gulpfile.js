@@ -1,22 +1,19 @@
 var banner = require('gulp-banner'),
-   clean = require('gulp-clean'),
    concat = require('gulp-concat'),
    gulp = require('gulp'),
    ngAnnotate = require('gulp-ng-annotate'),
    pkg = require('./package.json'),
    uglify = require('gulp-uglify');
 var comment = '/*\n' +
-    ' * <%= pkg.name %> <%= pkg.version %>\n' +
-    ' * <%= pkg.description %>\n' +
-    ' * <%= pkg.homepage %>\n' +
-    ' *\n' +
-    ' * Released under the <%= pkg.license %> license.\n' +
-    '*/\n\n';
+   ' * <%= pkg.name %> <%= pkg.version %>\n' +
+   ' * <%= pkg.description %>\n' +
+   ' * <%= pkg.homepage %>\n' +
+   ' *\n' +
+   ' * Released under the <%= pkg.license %> license.\n' +
+   '*/\n\n';
 
 gulp.task('js', function() {
-   return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/angular/angular.min.js',
-         'node_modules/d3/build/d3.min.js', 'node_modules/d3-cloud/build/d3.layout.cloud.js'
-      ])
+   return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/angular/angular.min.js', 'node_modules/d3/build/d3.min.js', 'node_modules/d3-cloud/build/d3.layout.cloud.js'])
       .pipe(gulp.dest('docs/js/plugins'));
 });
 gulp.task('css', function() {
@@ -35,7 +32,7 @@ gulp.task('toDist', function() {
       .pipe(concat('angular-word-cloud.min.js')).pipe(ngAnnotate()).pipe(uglify({
          mangle: true
       })).pipe(gulp.dest('dist'))
-      .pipe(gulp.dest('docs/dist'))
+      .pipe(gulp.dest('docs/dist'));
 });
 
 gulp.task('default', ['js', 'css', 'fonts', 'toDist']);

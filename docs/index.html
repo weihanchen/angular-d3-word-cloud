@@ -18,7 +18,7 @@
     <script src="dist/angular-word-cloud.min.js"></script>
 </head>
 
-<body ng-controller="appController as appCtrl">
+<body ng-controller="AppController as appCtrl">
     <section class="page-header">
         <h1 class="project-name">Angular-d3-word-cloud</h1>
         <h2 class="project-tagline"></h2>
@@ -38,7 +38,7 @@
         <h3><a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h3>
         <h5>Bower install</h5>
         <div class="highlight highlight-text-html-basic">
-            <pre>$ bower install angular-d3-word-cloud</pre>   
+            <pre>$ bower install angular-d3-word-cloud</pre>
         </div>
         <p><a href="https://angularjs.org/">angular.js</a>, <a href="https://d3js.org/">d3.js</a>, <a href="https://www.jasondavies.com/wordcloud/">d3.layout.cloud.js</a> would be install as dependencies auto. If it won't for some error, install it manually.</p>
         <div class="highlight">
@@ -60,13 +60,16 @@ $ bower install d3-cloud</pre></div>
                 <code>words=[array]</code> -&gt; [{text: '',size: 0}]</li>
             <li><code>height=[number]</code></li>
             <li><code>width=[number]</code></li>
+            <li><code>padding=[number]</code> -&gt; [optional] padding for each word, defaults to <code>5</code></li>
             <li>
                 <code>on-click=[function]</code> -&gt; word clicked callback</li>
+
         </ul>
         <h3>
 <a id="directive-usage" class="anchor" href="#directive-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Directive Usage</h3>
         <div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>wordsCloud<span class="pl-pds">"</span></span>&gt;
-   &lt;<span class="pl-ent">word</span><span class="pl-e">-cloud</span> <span class="pl-e">words</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.words<span class="pl-pds">"</span></span> <span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.width<span class="pl-pds">"</span></span> <span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.height<span class="pl-pds">"</span></span> <span class="pl-e">on-click</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.wordClicked<span class="pl-pds">"</span></span>&gt;
+   &lt;<span class="pl-ent">word</span><span class="pl-e">-cloud</span> <span class="pl-e">words</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.words<span class="pl-pds">"</span></span> <span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.width<span class="pl-pds">"</span></span> <span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.height<span class="pl-pds">"</span></span>
+         <span class="pl-e">padding</span>=<span class="pl-s"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span> <span class="pl-e">on-click</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.wordClicked<span class="pl-pds">"</span></span>&gt;
    &lt;/<span class="pl-ent">word</span><span class="pl-e">-cloud</span>&gt;
 &lt;/<span class="pl-ent">div</span>&gt;</pre></div>
         <h3>
@@ -96,10 +99,14 @@ $ bower install d3-cloud</pre></div>
 
         <h3><a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3>
         <textarea class="form-control" rows="5" cols="80" placeholder="Please input some content..." ng-model="appCtrl.content">> </textarea>
+        <div class="form-group">
+          Padding: <input type="text" class="form-control" placeholder="Please input padding number" ng-model="appCtrl.editPadding" />
+        </div>
         <p></p>
         <button class="btn-sm" ng-click="appCtrl.generateWords()"><i class="fa fa-cloud" aria-hidden="true"></i> Generate</button>
+        <p></p>
         <div id="wordsCloud">
-            <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" on-click="appCtrl.wordClicked">
+            <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="appCtrl.padding" on-click="appCtrl.wordClicked">
             </word-cloud>
         </div>
         <!--advance usage-->

@@ -83,9 +83,9 @@ module.exports = function(config) {
       // Concurrency level
       // how many browser should be started simultaneous
       concurrency: Infinity
-   }
+   };
    if (process.env.TRAVIS) {
       configuration.reporters.push('coveralls');
    }
-   config.set(configuration)
-}
+   config.set(configuration);
+};

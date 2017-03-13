@@ -55,12 +55,13 @@ Add dependencies to the <head> section of your index html:
 * `words=[array]` -> [{text: '',size: 0}]
 * `height=[number]`
 * `width=[number]`
+* `padding=[string]` -> [optional] padding for each word, defaults to `5`
 * `on-click=[function]` -> word clicked callback
 
 ## Directive Usage ##
 ```html
 <div id="wordsCloud">
-   <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" on-click="appCtrl.wordClicked">
+   <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="5" on-click="appCtrl.wordClicked">
    </word-cloud>
 </div>
 ```
@@ -107,7 +108,7 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
 ### Font size calculations ###
 
 ```javascript
-	 var element = $element.find('#wordsCloud');
+	   var element = $element.find('#wordsCloud');
      var height = $window.innerHeight * 0.75;
      element.height(height);
      var width = element[0].offsetWidth;

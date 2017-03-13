@@ -1,5 +1,5 @@
 /*
- * angular-d3-word-cloud-server 0.1.1
+ * angular-d3-word-cloud 0.3.0
  * Running example base on express server
  * https://weihanchen.github.io/angular-d3-word-cloud/
  *
@@ -9,12 +9,13 @@
 (function() {
    'use strict';
    angular.module('angular-d3-word-cloud', [])
-      .directive('wordCloud', [wordCloud])
+      .directive('wordCloud', [wordCloud]);
 
    function wordCloud() {
       return {
          restrict: 'E',
          scope: {
+            padding: '=?',
             words: '=',
             width: '=',
             height: '=',
@@ -34,15 +35,13 @@
           * layout grnerator by d3 and use drawListener to generator word cloud.
           */
          var layout = d3.layout.cloud()
-            .padding(5)
             .rotate(function() {
                return ~~(Math.random() * 2) * 60;
             })
-            .font("Impact")
             .fontSize(function(d) {
                return d.size;
             })
-            .on("end", drawListener);
+            .on('end', drawListener);
 
          $scope.$watch(watchParameters, watchListener, true);
 
@@ -52,46 +51,48 @@
             var height = layout.size()[1];
             wordsCloudSVGDiv.select('svg').remove();
             wordsCloudSVGDiv.append('svg')
-               .attr("width", width)
-               .attr("height", height)
-               .append("g")
-               .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
-               .selectAll("text")
+               .attr('width', width)
+               .attr('height', height)
+               .append('g')
+               .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
+               .selectAll('text')
                .data(words)
-               .enter().append("text")
-               .on("click", function(d) { //call back clicked element
+               .enter().append('text')
+               .on('click', function(d) { //call back clicked element
                   if (self.onClick) self.onClick(d);
                })
-               .on("mouseover", function() { //zoom in font-size
-                  d3.select(this).transition().style("font-size", function(d) {
+               .on('mouseover', function() { //zoom in font-size
+                  d3.select(this).transition().style('font-size', function(d) {
                      return d.size * 1.2 + 'px';
-                  }).attr('opacity', 0.5)
+                  }).attr('opacity', 0.5);
                })
-               .on("mouseout", function() {
-                  d3.select(this).transition().style("font-size", function(d) {
+               .on('mouseout', function() {
+                  d3.select(this).transition().style('font-size', function(d) {
                      return d.size + 'px';
-                  }).attr('opacity', 1)
+                  }).attr('opacity', 1);
                })
-               .style("font-size", function(d) {
-                  return d.size + "px";
+               .style('font-size', function(d) {
+                  return d.size + 'px';
                })
-               .style("font-family", "Impact")
-               .style("fill", function(d, i) {
+               .style('font-family', 'Impact')
+               .style('fill', function(d, i) {
                   return fill(i);
                })
-               .attr("text-anchor", "middle")
+               .attr('text-anchor', 'middle')
                .attr('cursor', 'pointer')
                .transition()
-               .attr("transform", function(d) {
-                  return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+               .attr('transform', function(d) {
+                  return 'translate(' + [d.x, d.y] + ')rotate(' + d.rotate + ')';
                })
                .text(function(d) {
                   return d.text;
-               })
+               });
          }
 
-         function updateLayout(width, height, words) {
+         function updateLayout(width, height, words, padding) {
+            padding = padding || 5;
             layout.size([width, height])
+               .padding(padding)
                .words(words);
             layout.start();
          }
@@ -103,11 +104,11 @@
             return self;
          }
 
-         function watchListener(newVal, oldVal) {
+         function watchListener(newVal) {
             var parameters = angular.copy(newVal);
             if (angular.isUndefined(parameters.words) || angular.isUndefined(parameters.width) || angular.isUndefined(parameters.height)) return;
-            updateLayout(parameters.width, parameters.height, parameters.words)
+            updateLayout(parameters.width, parameters.height, parameters.words, parameters.padding);
          }
       }
    }
-})()
+})();

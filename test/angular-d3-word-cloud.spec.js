@@ -1,12 +1,11 @@
 'use strict';
 describe('angular-d3-word-cloud directive', function() {
-   var $compile, $rootScope, $timeout, element;
+   var $compile, $rootScope, element;
    beforeEach(module('angular-d3-word-cloud'));
    //Inject dependencies
-   beforeEach(inject(function(_$compile_, _$rootScope_, _$document_, _$timeout_, _$window_) {
+   beforeEach(inject(function(_$compile_, _$rootScope_) {
       $compile = _$compile_;
       $rootScope = _$rootScope_;
-      $timeout = _$timeout_;
    }));
 
    function dispatchEventToWord(index, eventType) {
@@ -38,32 +37,32 @@ describe('angular-d3-word-cloud directive', function() {
    describe('basic feature', function() {
       beforeEach(function() {
          $rootScope.words = [{
-               text: 'Angular',
-               size: 35
-            },
-            {
-               text: 'Angular2',
-               size: 25
-            }
-         ]
+            text: 'Angular',
+            size: 35
+         },
+         {
+            text: 'Angular2',
+            size: 25
+         }];
          $rootScope.selectedWord;
          $rootScope.height = 500;
          $rootScope.width = 500;
+         $rootScope.padding = 10;
          $rootScope.wordClicked = function(word) {
             $rootScope.selectedWord = word;
-         }
-         element = $compile("<word-cloud words='words' width='width' height='height' on-click='wordClicked'></word-cloud>")($rootScope);
+         };
+         element = $compile('<word-cloud words="words" width="width" height="height" padding="padding" on-click="wordClicked"></word-cloud>')($rootScope);
          spyOn($rootScope, 'wordClicked').and.callThrough();
          $rootScope.$digest();
-      })
+      });
       it('dose not rendered the elements when not pass width、height paramters', function() {
          //Act
-         element = $compile("<word-cloud on-click='wordClicked'></word-cloud>")($rootScope);
+         element = $compile('<word-cloud on-click="wordClicked"></word-cloud>')($rootScope);
          $rootScope.$digest();
-        var wordElements = getElements();
+         var wordElements = getElements();
          //Assert
          expect(wordElements.length).toBe(0);
-      })
+      });
 
       it('should add the elements to the dom', function() {
          //Act
@@ -104,14 +103,14 @@ describe('angular-d3-word-cloud directive', function() {
 
       it('dose not call wordClicked if not binding onClick', function() {
          //Arrange
-         element = $compile("<word-cloud words='words' width='width' height='height'></word-cloud>")($rootScope);
+         element = $compile('<word-cloud words="words" width="width" height="height"></word-cloud>')($rootScope);
          $rootScope.$digest();
          //Act
          dispatchEventToWord(0, 'click');
          $rootScope.$apply();
          //Assert
          expect($rootScope.wordClicked).not.toHaveBeenCalled();
-      })
+      });
 
       it('shoud word size greater then origin size when mouseover', function() {
          //Arrange
@@ -125,7 +124,7 @@ describe('angular-d3-word-cloud directive', function() {
 
          //Assert
          expect(currentFontSize).toBeGreaterThan(sourceWordSize);
-      })
+      });
 
       it('should word size equal with origin size when zoom in and out', function() {
          //Arrange
@@ -141,6 +140,6 @@ describe('angular-d3-word-cloud directive', function() {
 
          //Assert
          expect(sourceWordSize).toEqual(currentFontSize);
-      })
-   })
-})
+      });
+   });
+});
