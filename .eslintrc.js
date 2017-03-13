@@ -29,10 +29,6 @@ module.exports = {
       "angular/angularelement": "off",
       "no-undef": "error",
       "no-console": "off",
-      "linebreak-style": [
-         "error",
-         "windows"
-      ],
       "quotes": [
          "error",
          "single"
