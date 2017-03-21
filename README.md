@@ -52,7 +52,8 @@ Add dependencies to the <head> section of your index html:
 ```
 
 ## Options ##
-* `words=[array]` -> [{text: '',size: 0}]
+Note: if words element not contains color property, default will use [d3 schemeCategory20](https://github.com/d3/d3-scale#category-scales)
+* `words=[array]` -> [{text: '',size: 0, color: '#6d989e'}]
 * `height=[number]`
 * `width=[number]`
 * `padding=[string]` -> [optional] padding for each word, defaults to `5`
@@ -79,8 +80,8 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
 		self.width = $element.find('#wordsCloud')[0].offsetWidth;
 		self.wordClicked = wordClicked;
 		self.words = [
-			{text: 'Angular',size: 25},
-			{text: 'Angular2',size: 35}
+			{text: 'Angular',size: 25, color: '#6d989e'},
+			{text: 'Angular2',size: 35, color: '#473fa3'}
 		]
 
 		function wordClicked(word){
@@ -108,7 +109,7 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
 ### Font size calculations ###
 
 ```javascript
-	   var element = $element.find('#wordsCloud');
+	 var element = $element.find('#wordsCloud');
      var height = $window.innerHeight * 0.75;
      element.height(height);
      var width = element[0].offsetWidth;
@@ -122,7 +123,8 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
      self.words = originWords.map(function(word) {
          return {
              text: word.text,
-             size: Math.round(maxWordSize - ((maxCount - word.count) * step))
+             size: Math.round(maxWordSize - ((maxCount - word.count) * step)),
+             color: '#473fa3'//you can assign custom color
          }
      })
      self.width = width;
