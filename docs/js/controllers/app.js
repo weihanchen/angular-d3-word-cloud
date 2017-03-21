@@ -1,5 +1,5 @@
 (function() {
-   angular.module('app', ['angular-d3-word-cloud'])
+   angular.module('app', ['angular-d3-word-cloud', 'colorpicker.module'])
       .controller('AppController', ['$window', '$element', '$timeout', appController]);
 
    function appController($window, $element, $timeout) {
@@ -7,6 +7,7 @@
       var maxWordCount = 1000;
       var self = this;
       self.content = 'If you prefer to not use the automatic generator, push a branch named gh-pages to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator GitHub username to generate a link to their profile';
+      self.customColor;
       self.generateWords = generateWords;
       self.padding = 8;
       self.editPadding = 8;
@@ -48,7 +49,8 @@
             self.words = originWords.map(function(word) {
                return {
                   text: word.text,
-                  size: Math.round(maxWordSize - ((maxCount - word.count) * step))
+                  size: Math.round(maxWordSize - ((maxCount - word.count) * step)),
+                  color: self.customColor
                };
             });
             self.width = width;

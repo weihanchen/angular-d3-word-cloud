@@ -76,7 +76,7 @@
                })
                .style('font-family', 'Impact')
                .style('fill', function(d, i) {
-                  return fill(i);
+                  return d.color || fill(i);
                })
                .attr('text-anchor', 'middle')
                .attr('cursor', 'pointer')
