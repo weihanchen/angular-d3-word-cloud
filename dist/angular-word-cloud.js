@@ -1,5 +1,5 @@
 /*
- * angular-d3-word-cloud 0.3.1
+ * angular-d3-word-cloud 0.4.0
  * Running example base on express server
  * https://weihanchen.github.io/angular-d3-word-cloud/
  *
