@@ -57,12 +57,13 @@ Note: if words element not contains color property, default will use [d3 schemeC
 * `height=[number]`
 * `width=[number]`
 * `padding=[string]` -> [optional] padding for each word, defaults to `5`
+* `rotate=[number, function]` -> [optional] rotation for each word, default to `~~(Math.random() * 2) * 60`
 * `on-click=[function]` -> word clicked callback
 
 ## Directive Usage ##
 ```html
 <div id="wordsCloud">
-   <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="5" on-click="appCtrl.wordClicked">
+   <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="5" rotate="appCtrl.rotate" on-click="appCtrl.wordClicked">
    </word-cloud>
 </div>
 ```
@@ -79,10 +80,15 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
 		self.height = $window.innerHeight * 0.5;
 		self.width = $element.find('#wordsCloud')[0].offsetWidth;
 		self.wordClicked = wordClicked;
+        self.rotate = rotate;
 		self.words = [
 			{text: 'Angular',size: 25, color: '#6d989e'},
 			{text: 'Angular2',size: 35, color: '#473fa3'}
 		]
+
+        function rotate() {
+            return ~~(Math.random() * 2) * 90;
+        }
 
 		function wordClicked(word){
 			alert('text: ' + word.text + ',size: ' + word.size);

@@ -56,6 +56,7 @@
             self.width = width;
             self.height = height;
             self.padding = self.editPadding;
+            self.rotate = self.editRotate;
          });
       }
 

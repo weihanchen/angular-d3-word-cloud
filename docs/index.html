@@ -63,6 +63,7 @@ $ bower install d3-cloud</pre></div>
             <li><code>height=[number]</code></li>
             <li><code>width=[number]</code></li>
             <li><code>padding=[number]</code> -&gt; [optional] padding for each word, defaults to <code>5</code></li>
+            <li><code>rotate=[number, function]</code> -&gt; [optional] rotation for each word, defaults to <code>~~(Math.random() * 2) * 60</code></li>
             <li>
                 <code>on-click=[function]</code> -&gt; word clicked callback</li>
 
@@ -71,7 +72,9 @@ $ bower install d3-cloud</pre></div>
 <a id="directive-usage" class="anchor" href="#directive-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Directive Usage</h3>
         <div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>wordsCloud<span class="pl-pds">"</span></span>&gt;
    &lt;<span class="pl-ent">word</span><span class="pl-e">-cloud</span> <span class="pl-e">words</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.words<span class="pl-pds">"</span></span> <span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.width<span class="pl-pds">"</span></span> <span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.height<span class="pl-pds">"</span></span>
-         <span class="pl-e">padding</span>=<span class="pl-s"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span> <span class="pl-e">on-click</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.wordClicked<span class="pl-pds">"</span></span>&gt;
+         <span class="pl-e">padding</span>=<span class="pl-s"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span> 
+         <span class="pl-e">rotate</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.rotate<span class="pl-pds">"</span></span> 
+         <span class="pl-e">on-click</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.wordClicked<span class="pl-pds">"</span></span>&gt;
    &lt;/<span class="pl-ent">word</span><span class="pl-e">-cloud</span>&gt;
 &lt;/<span class="pl-ent">div</span>&gt;</pre></div>
         <h3>
@@ -85,11 +88,18 @@ $ bower install d3-cloud</pre></div>
         <span class="pl-smi">self</span>.<span class="pl-c1">height</span> <span class="pl-k">=</span> <span class="pl-smi">$window</span>.<span class="pl-c1">innerHeight</span> <span class="pl-k">*</span> <span class="pl-c1">0.5</span>;
         <span class="pl-smi">self</span>.<span class="pl-c1">width</span> <span class="pl-k">=</span> <span class="pl-smi">$element</span>.<span class="pl-c1">find</span>(<span class="pl-s"><span class="pl-pds">'</span>word-cloud<span class="pl-pds">'</span></span>)[<span class="pl-c1">0</span>].<span class="pl-smi">offsetWidth</span>;
         <span class="pl-smi">self</span>.<span class="pl-smi">wordClicked</span> <span class="pl-k">=</span> wordClicked;
+        <span class="pl-smi">self</span>.<span class="pl-smi">rotate</span> <span class="pl-k">=</span> rotate;
         <span class="pl-smi">self</span>.<span class="pl-smi">words</span> <span class="pl-k">=</span> [
             {text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Angular<span class="pl-pds">'</span></span>,size<span class="pl-k">:</span> <span class="pl-c1">25</span>,color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>#0e6632<span class="pl-pds">'</span></span>},
             {text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Angular2<span class="pl-pds">'</span></span>,size<span class="pl-k">:</span> <span class="pl-c1">35</span>,color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>#0e558<span class="pl-pds">'</span></span>}
         ]
+        
 
+        <span class="pl-k">function</span> <span class="pl-en">rotate</span>(<span class="pl-smi"></span>){
+            <span class="pl-en">return</span> ~~(Math.random() * 2) * 90;
+        }
+
+        //custom rotate
         <span class="pl-k">function</span> <span class="pl-en">wordClicked</span>(<span class="pl-smi">word</span>){
             <span class="pl-en">alert</span>(word);
         }
@@ -109,10 +119,14 @@ $ bower install d3-cloud</pre></div>
            Custom words color: <input type="text" colorpicker colorpicker-position="top" ng-model="appCtrl.customColor" />
         </div>
         <p></p>
+        <div class="form-group">
+            Rotate: <input type="text" class="form-control" placeholder="Please input rotate number" ng-model="appCtrl.editRotate">
+        </div>
+        <p></p>
         <button class="btn-sm" ng-click="appCtrl.generateWords()"><i class="fa fa-cloud" aria-hidden="true"></i> Generate</button>
         <p></p>
         <div id="wordsCloud">
-            <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="appCtrl.padding" on-click="appCtrl.wordClicked">
+            <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="appCtrl.padding" rotate="appCtrl.rotate" on-click="appCtrl.wordClicked">
             </word-cloud>
         </div>
         <!--advance usage-->
