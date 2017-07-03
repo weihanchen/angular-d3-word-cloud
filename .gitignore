@@ -6,3 +6,4 @@ npm-debug.log
 /docs/css/plugins
 /docs/css/fonts
 /docs/dist
+package-lock.json

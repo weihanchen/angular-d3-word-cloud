@@ -25,10 +25,9 @@
          /* istanbul ignore next */
          var fill = (d3.hasOwnProperty('scale')) ? d3.scale.category20() : d3.scaleOrdinal(d3.schemeCategory20);
          /**
-          * layout grnerator by d3 and use drawListener to generator word cloud.
+          * layout grnerator by d3 and use drawListener to generate word cloud.
           */
          var layout = d3.layout.cloud()
-
             .fontSize(function (d) {
                return d.size;
             })

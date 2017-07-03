@@ -56,7 +56,7 @@ Note: if words element not contains color property, default will use [d3 schemeC
 * `words=[array]` -> [{text: '',size: 0, color: '#6d989e'}]
 * `height=[number]`
 * `width=[number]`
-* `padding=[string]` -> [optional] padding for each word, defaults to `5`
+* `padding=[number]` -> [optional] padding for each word, defaults to `5`
 * `rotate=[number, function]` -> [optional] rotation for each word, default to `~~(Math.random() * 2) * 60`
 * `on-click=[function]` -> word clicked callback
 
@@ -72,7 +72,7 @@ Note: if words element not contains color property, default will use [d3 schemeC
 Inject `angular-d3-word-cloud` into angular module, set up some options to our controller
 
 ```javascript
-	(function(){
+(function(){
 	angular.module('app',['angular-d3-word-cloud'])
 		.controller('appController',['$window','$element',appController])
 	function appController($window,$element){
