@@ -51,7 +51,7 @@ describe('angular-d3-word-cloud directive', function() {
          $rootScope.wordClicked = function(word) {
             $rootScope.selectedWord = word;
          };
-         element = $compile('<word-cloud words="words" width="width" height="height" padding="padding" on-click="wordClicked"></word-cloud>')($rootScope);
+         element = $compile('<word-cloud words="words" width="width" height="height" padding="padding" use-transition="true" on-click="wordClicked"></word-cloud>')($rootScope);
          spyOn($rootScope, 'wordClicked').and.callThrough();
          $rootScope.$digest();
       });

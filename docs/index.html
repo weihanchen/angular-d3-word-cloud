@@ -126,7 +126,7 @@ $ bower install d3-cloud</pre></div>
         <button class="btn-sm" ng-click="appCtrl.generateWords()"><i class="fa fa-cloud" aria-hidden="true"></i> Generate</button>
         <p></p>
         <div id="wordsCloud">
-            <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="appCtrl.padding" rotate="appCtrl.rotate" on-click="appCtrl.wordClicked">
+            <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="appCtrl.padding" rotate="appCtrl.rotate" use-transition="true" use-tooltip="true" on-click="appCtrl.wordClicked">
             </word-cloud>
         </div>
         <!--advance usage-->

@@ -10,6 +10,8 @@
             height: '=',
             padding: '=?',
             rotate: '=?',
+            useTooltip: '=?',
+            useTransition: '=?',
             words: '=',
             width: '=',
             onClick: '='
@@ -24,6 +26,10 @@
          var self = this;
          /* istanbul ignore next */
          var fill = (d3.hasOwnProperty('scale')) ? d3.scale.category20() : d3.scaleOrdinal(d3.schemeCategory20);
+         var tooltip = d3.select('body')
+            .append('div')
+            .style('position', 'absolute')
+            .style('visibility', 'hidden');
          /**
           * layout grnerator by d3 and use drawListener to generate word cloud.
           */
@@ -55,16 +61,25 @@
                .on('click', function (d) { //call back clicked element
                   if (self.onClick) self.onClick(d);
                })
-               .on('mouseover', function () { //zoom in font-size
-                  d3.select(this).transition().style('font-size', function (d) {
-                     return d.size * 1.2 + 'px';
-                  }).attr('opacity', 0.5);
+               .on('mouseover', function (d) { //zoom in font-size
+                  if (self.useTooltip) {
+                     tooltip.style('font-size', d.size + 'px').style('visibility', 'visible').text(d.tooltipText || d.text);
+                  }
+                  if (self.useTransition) {
+                     d3.select(this).transition().style('font-size', function (d) {
+                        return d.size * 1.2 + 'px';
+                     }).attr('opacity', 0.5);
+                  }
                })
                .on('mouseout', function () {
-                  d3.select(this).transition().style('font-size', function (d) {
-                     return d.size + 'px';
-                  }).attr('opacity', 1);
+                  tooltip.style('visibility', 'hidden');
+                  if (self.useTransition) {
+                     d3.select(this).transition().style('font-size', function (d) {
+                        return d.size + 'px';
+                     }).attr('opacity', 1);
+                  }
                })
+               .on('mousemove', function () { return tooltip.style('top', (event.pageY - 10) + 'px').style('left', (event.pageX + 10) + 'px'); })
                .style('font-size', function (d) {
                   return d.size + 'px';
                })

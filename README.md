@@ -53,11 +53,13 @@ Add dependencies to the <head> section of your index html:
 
 ## Options ##
 Note: if words element not contains color property, default will use [d3 schemeCategory20](https://github.com/d3/d3-scale#category-scales)
-* `words=[array]` -> [{text: '',size: 0, color: '#6d989e'}]
+* `words=[array]` -> [{text: '',size: 0, color: '#6d989e', tooltipText: ''}]
 * `height=[number]`
 * `width=[number]`
 * `padding=[number]` -> [optional] padding for each word, defaults to `5`
 * `rotate=[number, function]` -> [optional] rotation for each word, default to `~~(Math.random() * 2) * 60`
+* `use-tooltip=[boolean]`
+* `use-transition=[boolean]`
 * `on-click=[function]` -> word clicked callback
 
 ## Directive Usage ##
