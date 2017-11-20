@@ -58,14 +58,14 @@ Note: if words element not contains color property, default will use [d3 schemeC
 * `width=[number]`
 * `padding=[number]` -> [optional] padding for each word, defaults to `5`
 * `rotate=[number, function]` -> [optional] rotation for each word, default to `~~(Math.random() * 2) * 60`
-* `use-tooltip=[boolean]`
-* `use-transition=[boolean]`
+* `use-tooltip=[boolean]` default tooltip template
+* `use-transition=[boolean]` transition with font size
 * `on-click=[function]` -> word clicked callback
 
 ## Directive Usage ##
 ```html
 <div id="wordsCloud">
-   <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="5" rotate="appCtrl.rotate" on-click="appCtrl.wordClicked">
+   <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="5" rotate="appCtrl.rotate" use-tooltip="appCtrl.useTooltip"  use-transition="appCtrl.useTransition" on-click="appCtrl.wordClicked">
    </word-cloud>
 </div>
 ```
@@ -83,9 +83,11 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
 		self.width = $element.find('#wordsCloud')[0].offsetWidth;
 		self.wordClicked = wordClicked;
         self.rotate = rotate;
+        self.useTooltip = true;
+        self.useTransition = false;
 		self.words = [
-			{text: 'Angular',size: 25, color: '#6d989e'},
-			{text: 'Angular2',size: 35, color: '#473fa3'}
+			{text: 'Angular',size: 25, color: '#6d989e', tooltipText: 'Angular Tooltip'},
+			{text: 'Angular2',size: 35, color: '#473fa3', tooltipText: 'Angular2 Tooltip'}
 		]
 
         function rotate() {

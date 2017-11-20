@@ -11,6 +11,8 @@
       self.generateWords = generateWords;
       self.padding = 8;
       self.editPadding = 8;
+      self.useTooltip = true;
+      self.useTransition = true;
       self.wordClicked = wordClicked;
       self.words = [];
       generateWords();
@@ -50,7 +52,8 @@
                return {
                   text: word.text,
                   size: Math.round(maxWordSize - ((maxCount - word.count) * step)),
-                  color: self.customColor
+                  color: self.customColor,
+                  tooltipText: word.text + ' tooltip'
                };
             });
             self.width = width;

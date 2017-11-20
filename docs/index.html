@@ -64,6 +64,8 @@ $ bower install d3-cloud</pre></div>
             <li><code>width=[number]</code></li>
             <li><code>padding=[number]</code> -&gt; [optional] padding for each word, defaults to <code>5</code></li>
             <li><code>rotate=[number, function]</code> -&gt; [optional] rotation for each word, defaults to <code>~~(Math.random() * 2) * 60</code></li>
+            <li><code>use-tooltip=[boolean]</code> -&gt; [optional] default tooltip template</li>
+            <li><code>use-transition=[boolean]</code> -&gt; [optional] transition with font size</li>
             <li>
                 <code>on-click=[function]</code> -&gt; word clicked callback</li>
 
@@ -74,6 +76,8 @@ $ bower install d3-cloud</pre></div>
    &lt;<span class="pl-ent">word</span><span class="pl-e">-cloud</span> <span class="pl-e">words</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.words<span class="pl-pds">"</span></span> <span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.width<span class="pl-pds">"</span></span> <span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.height<span class="pl-pds">"</span></span>
          <span class="pl-e">padding</span>=<span class="pl-s"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span> 
          <span class="pl-e">rotate</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.rotate<span class="pl-pds">"</span></span> 
+         <span class="pl-e">use-tooltip</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.useTooltip<span class="pl-pds">"</span></span> 
+         <span class="pl-e">use-transition</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.useTransition<span class="pl-pds">"</span></span> 
          <span class="pl-e">on-click</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.wordClicked<span class="pl-pds">"</span></span>&gt;
    &lt;/<span class="pl-ent">word</span><span class="pl-e">-cloud</span>&gt;
 &lt;/<span class="pl-ent">div</span>&gt;</pre></div>
@@ -89,9 +93,11 @@ $ bower install d3-cloud</pre></div>
         <span class="pl-smi">self</span>.<span class="pl-c1">width</span> <span class="pl-k">=</span> <span class="pl-smi">$element</span>.<span class="pl-c1">find</span>(<span class="pl-s"><span class="pl-pds">'</span>word-cloud<span class="pl-pds">'</span></span>)[<span class="pl-c1">0</span>].<span class="pl-smi">offsetWidth</span>;
         <span class="pl-smi">self</span>.<span class="pl-smi">wordClicked</span> <span class="pl-k">=</span> wordClicked;
         <span class="pl-smi">self</span>.<span class="pl-smi">rotate</span> <span class="pl-k">=</span> rotate;
+        <span class="pl-smi">self</span>.<span class="pl-smi">useTooltip</span> <span class="pl-k">=</span> true;
+        <span class="pl-smi">self</span>.<span class="pl-smi">useTransition</span> <span class="pl-k">=</span> true;
         <span class="pl-smi">self</span>.<span class="pl-smi">words</span> <span class="pl-k">=</span> [
-            {text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Angular<span class="pl-pds">'</span></span>,size<span class="pl-k">:</span> <span class="pl-c1">25</span>,color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>#0e6632<span class="pl-pds">'</span></span>},
-            {text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Angular2<span class="pl-pds">'</span></span>,size<span class="pl-k">:</span> <span class="pl-c1">35</span>,color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>#0e558<span class="pl-pds">'</span></span>}
+            {text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Angular<span class="pl-pds">'</span></span>,size<span class="pl-k">:</span> <span class="pl-c1">25</span>,color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>#0e6632<span class="pl-pds">'</span></span>,tooltipText<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Angular Tooltip<span class="pl-pds">'</span></span>},
+            {text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Angular2<span class="pl-pds">'</span></span>,size<span class="pl-k">:</span> <span class="pl-c1">35</span>,color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>#0e558<span class="pl-pds">'</span></span>,tooltipText<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Angular2 Tooltip<span class="pl-pds">'</span></span>}
         ]
         
 
@@ -125,8 +131,23 @@ $ bower install d3-cloud</pre></div>
         <p></p>
         <button class="btn-sm" ng-click="appCtrl.generateWords()"><i class="fa fa-cloud" aria-hidden="true"></i> Generate</button>
         <p></p>
+        <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" ng-model="appCtrl.useTooltip">
+              tooltip
+            </label>
+            <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" ng-model="appCtrl.useTransition">
+                transition
+            </label>
+        </div>
+        <p></p>
+        <div class="form-check">
+            <label class="form-check-label">
+            
+        </div>
         <div id="wordsCloud">
-            <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="appCtrl.padding" rotate="appCtrl.rotate" use-transition="true" use-tooltip="true" on-click="appCtrl.wordClicked">
+            <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="appCtrl.padding" rotate="appCtrl.rotate" use-transition="appCtrl.useTransition" use-tooltip="appCtrl.useTooltip" use-transition="appCtrl.useTransition" on-click="appCtrl.wordClicked">
             </word-cloud>
         </div>
         <!--advance usage-->
@@ -161,7 +182,8 @@ $ bower install d3-cloud</pre></div>
          <span class="pl-k">return</span> {
              text<span class="pl-k">:</span> <span class="pl-smi">word</span>.<span class="pl-c1">text</span>,
              size<span class="pl-k">:</span> <span class="pl-c1">Math</span>.<span class="pl-c1">round</span>(maxWordSize <span class="pl-k">-</span> ((maxCount <span class="pl-k">-</span> <span class="pl-smi">word</span>.<span class="pl-smi">count</span>) <span class="pl-k">*</span> step)),
-             color<span class="pl-k">:</span> <span class="pl-smi">self</span>.<span class="pl-c1">customColor</span>
+             color<span class="pl-k">:</span> <span class="pl-smi">self</span>.<span class="pl-c1">customColor</span>,
+             tooltipText<span class="pl-k">:</span> <span class="pl-smi">word</span>.<span class="pl-c1">text</span> + 'tooltip',
          }
      })
      <span class="pl-smi">self</span>.<span class="pl-c1">width</span> <span class="pl-k">=</span> width;
