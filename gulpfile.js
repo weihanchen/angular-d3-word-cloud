@@ -33,7 +33,11 @@ gulp.task('toDist', function() {
       .pipe(gulp.dest('docs/dist'))
       .pipe(concat('angular-word-cloud.min.js')).pipe(ngAnnotate()).pipe(uglify({
          mangle: true
-      })).pipe(gulp.dest('dist'))
+      }))
+      .pipe(banner(comment, {
+         pkg: pkg
+      }))
+      .pipe(gulp.dest('dist'))
       .pipe(gulp.dest('docs/dist'));
 });
 
