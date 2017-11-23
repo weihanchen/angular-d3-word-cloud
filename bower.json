@@ -14,8 +14,7 @@
     "dependencies": {
         "angular": "~1.x",
         "d3": "~4.6.0",
-        "d3-cloud": "~1.2.4",
-        "jquery": "~1.12.4"
+        "d3-cloud": "~1.2.4"
     },
     "ignore": [
         "**/.*",

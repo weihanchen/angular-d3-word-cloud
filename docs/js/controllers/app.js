@@ -1,8 +1,8 @@
 (function() {
    angular.module('app', ['angular-d3-word-cloud', 'colorpicker.module'])
-      .controller('AppController', ['$window', '$element', '$timeout', appController]);
+      .controller('AppController', ['$window', '$timeout', appController]);
 
-   function appController($window, $element, $timeout) {
+   function appController($window, $timeout) {
       var originWords = [];
       var maxWordCount = 1000;
       var self = this;
@@ -37,10 +37,10 @@
        */
       function resizeWordsCloud() {
          $timeout(function() {
-            var element = $element.find('#wordsCloud');
+            var element = document.getElementById('wordsCloud');
             var height = $window.innerHeight * 0.75;
-            element.height(height);
-            var width = element[0].offsetWidth;
+            element.style.height = height + 'px';
+            var width = element.getBoundingClientRect().width;
             var maxCount = originWords[0].count;
             var minCount = originWords[originWords.length - 1].count;
             var maxWordSize = width * 0.15;

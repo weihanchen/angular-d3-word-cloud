@@ -16,6 +16,7 @@ globals:
   it: true
   process: true
   spyOn: true
+  document: true
   __dirname: true
   __testBase: true
   "$": true
@@ -26,6 +27,7 @@ rules:
   angular/controller-as-vm: 'off'
   angular/log: 'off'
   angular/angularelement: 'off'
+  angular/document-service: 'off'
   no-undef: error
   no-console: 'off'
   quotes:

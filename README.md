@@ -44,7 +44,6 @@ Add dependencies to the <head> section of your index html:
 
 ```html
 <meta charset="utf-8">  <!-- it's important for d3.js -->
-<script src="[bower_components/node_modules]/jquery/dist/jquery.min.js"></script>
 <script src="[bower_components/node_modules]/angular/angular.min.js"></script>
 <script src="[bower_components/node_modules]/d3/d3.min.js"></script>
 <script src="[bower_components/node_modules]/d3-cloud/build/d3.layout.cloud.js"></script>
@@ -119,10 +118,10 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
 ### Font size calculations ###
 
 ```javascript
-	 var element = $element.find('#wordsCloud');
+	 var element = document.getElementById('wordsCloud');
      var height = $window.innerHeight * 0.75;
-     element.height(height);
-     var width = element[0].offsetWidth;
+     element.style.height = height + 'px';
+     var width = element.getBoundingClientRect().width;
      var maxCount = originWords[0].count;
      var minCount = originWords[originWords.length - 1].count;
      var maxWordSize = width * 0.15;
