@@ -80,6 +80,9 @@
                   }
                })
                .on('mouseout', function () {
+                  if (self.useTooltip) {
+                     tooltip.style('visibility', 'hidden')
+                  }
                   if (self.useTransition) {
                      d3.select(this).transition().style('font-size', function (d) {
                         return d.size + 'px';
