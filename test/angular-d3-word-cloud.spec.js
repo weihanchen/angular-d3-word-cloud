@@ -30,7 +30,7 @@ describe('angular-d3-word-cloud directive', function() {
    function getWordStyle(index, style) {
       var words = d3.select(element[0]).select('svg').selectAll('text');
       var word = words.nodes()[index];
-      return $(word).css(style);
+      return angular.element(word).css(style);
    }
 
 
@@ -38,11 +38,13 @@ describe('angular-d3-word-cloud directive', function() {
       beforeEach(function() {
          $rootScope.words = [{
             text: 'Angular',
-            size: 35
+            size: 35,
+            tooltipText: 'Angular Tooltip'
          },
          {
             text: 'Angular2',
-            size: 25
+            size: 25,
+            tooltipText: 'Angular2 Tooltip'
          }];
          $rootScope.selectedWord;
          $rootScope.height = 500;
@@ -140,6 +142,28 @@ describe('angular-d3-word-cloud directive', function() {
 
          //Assert
          expect(sourceWordSize).toEqual(currentFontSize);
+      });
+
+      it('should rendered current tooltip text', function() {
+         //Arrange
+         var idx = 0;
+         var tooltipText = $rootScope.words[idx].tooltipText;
+         //Act
+         element = $compile('<word-cloud words="words" width="width" height="height" padding="padding" use-tooltip="true" on-click="wordClicked"></word-cloud>')($rootScope);
+         $rootScope.$digest();
+         
+         dispatchEventToWord(idx, 'mouseover');
+         flushAllD3Transitions();
+         dispatchEventToWord(idx, 'mousemove');
+         var divs = angular.element(document.body).find('div');
+         var passed = Object.keys(divs).some(function(key) {
+            var div = divs[key]; 
+            var text = angular.element(div).text();
+            return text === tooltipText;
+         });
+         
+         //Assert
+         expect(passed).toBeTruthy();
       });
    });
 });
