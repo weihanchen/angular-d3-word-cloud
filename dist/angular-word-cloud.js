@@ -1,5 +1,5 @@
 /*
- * angular-d3-word-cloud 0.5.0
+ * angular-d3-word-cloud 0.5.1
  * Running example base on express server
  * https://weihanchen.github.io/angular-d3-word-cloud/
  *
@@ -80,7 +80,6 @@
                   }
                })
                .on('mouseout', function () {
-                  tooltip.style('visibility', 'hidden');
                   if (self.useTransition) {
                      d3.select(this).transition().style('font-size', function (d) {
                         return d.size + 'px';
