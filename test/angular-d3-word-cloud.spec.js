@@ -161,6 +161,7 @@ describe('angular-d3-word-cloud directive', function() {
             var text = angular.element(div).text();
             return text === tooltipText;
          });
+         dispatchEventToWord(idx, 'mouseout');
          
          //Assert
          expect(passed).toBeTruthy();
