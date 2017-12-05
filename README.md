@@ -57,6 +57,7 @@ Note: if words element not contains color property, default will use [d3 schemeC
 * `width=[number]`
 * `padding=[number]` -> [optional] padding for each word, defaults to `5`
 * `rotate=[number, function]` -> [optional] rotation for each word, default to `~~(Math.random() * 2) * 60`
+* `random=[function]` -> [optional] default to `Math.random`, If specified, sets the internal random number generator, used for selecting the initial position of each word, and the clockwise/counterclockwise direction of the spiral for each word. This should return a number in the range [0, 1).
 * `use-tooltip=[boolean]` default tooltip template
 * `use-transition=[boolean]` transition with font size
 * `on-click=[function]` -> word clicked callback
