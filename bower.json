@@ -1,6 +1,6 @@
 {
     "name": "angular-d3-word-cloud",
-    "version": "0.5.2",
+    "version": "0.5.3",
     "description": "An AngularJS directive for angular-d3-word-cloud.js base on d3.js",
     "main": ["dist/angular-d3-word-cloud.js"],
     "authors": [
