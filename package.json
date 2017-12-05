@@ -1,7 +1,7 @@
 {
    "name": "angular-d3-word-cloud",
    "description": "Running example base on express server",
-   "version": "0.5.2",
+   "version": "0.5.3",
    "license": "MIT",
    "homepage": "https://weihanchen.github.io/angular-d3-word-cloud/",
    "author": {
