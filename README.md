@@ -65,7 +65,7 @@ Note: if words element not contains color property, default will use [d3 schemeC
 ## Directive Usage ##
 ```html
 <div id="wordsCloud">
-   <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="5" rotate="appCtrl.rotate" use-tooltip="appCtrl.useTooltip"  use-transition="appCtrl.useTransition" on-click="appCtrl.wordClicked">
+   <word-cloud words="appCtrl.words" width="appCtrl.width" height="appCtrl.height" padding="5" rotate="appCtrl.rotate" use-tooltip="appCtrl.useTooltip"  random="appCtrl.random" use-transition="appCtrl.useTransition" on-click="appCtrl.wordClicked">
    </word-cloud>
 </div>
 ```
@@ -88,7 +88,10 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
 		self.words = [
 			{text: 'Angular',size: 25, color: '#6d989e', tooltipText: 'Angular Tooltip'},
 			{text: 'Angular2',size: 35, color: '#473fa3', tooltipText: 'Angular2 Tooltip'}
-		]
+        ]
+        self.random = function(){
+            return 0.4; // a constant value here will ensure the word position is fixed upon each page refresh.
+        }
 
         function rotate() {
             return ~~(Math.random() * 2) * 90;
