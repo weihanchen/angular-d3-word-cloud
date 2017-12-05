@@ -14,6 +14,7 @@
             useTransition: '=?',
             words: '=',
             width: '=',
+            random: '=',
             onClick: '='
          },
          template: '<div></div>',
@@ -37,6 +38,7 @@
             .fontSize(function (d) {
                return d.size;
             })
+            .random(self.random || Math.random)
             .on('end', drawListener);
 
          $scope.$watch(watchParameters, watchListener, true);
