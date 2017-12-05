@@ -63,6 +63,7 @@ $ bower install d3-cloud</pre></div>
             <li><code>width=[number]</code></li>
             <li><code>padding=[number]</code> -&gt; [optional] padding for each word, defaults to <code>5</code></li>
             <li><code>rotate=[number, function]</code> -&gt; [optional] rotation for each word, defaults to <code>~~(Math.random() * 2) * 60</code></li>
+            <li><code>random=[function]</code> -&gt; [optional] a constant value here will ensure the word position is fixed upon each page refresh. </li>
             <li><code>use-tooltip=[boolean]</code> -&gt; [optional] default tooltip template</li>
             <li><code>use-transition=[boolean]</code> -&gt; [optional] transition with font size</li>
             <li>
@@ -75,6 +76,7 @@ $ bower install d3-cloud</pre></div>
    &lt;<span class="pl-ent">word</span><span class="pl-e">-cloud</span> <span class="pl-e">words</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.words<span class="pl-pds">"</span></span> <span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.width<span class="pl-pds">"</span></span> <span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.height<span class="pl-pds">"</span></span>
          <span class="pl-e">padding</span>=<span class="pl-s"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span> 
          <span class="pl-e">rotate</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.rotate<span class="pl-pds">"</span></span> 
+         <span class="pl-e">random</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.random<span class="pl-pds">"</span></span> 
          <span class="pl-e">use-tooltip</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.useTooltip<span class="pl-pds">"</span></span> 
          <span class="pl-e">use-transition</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.useTransition<span class="pl-pds">"</span></span> 
          <span class="pl-e">on-click</span>=<span class="pl-s"><span class="pl-pds">"</span>appCtrl.wordClicked<span class="pl-pds">"</span></span>&gt;
@@ -99,12 +101,17 @@ $ bower install d3-cloud</pre></div>
             {text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Angular2<span class="pl-pds">'</span></span>,size<span class="pl-k">:</span> <span class="pl-c1">35</span>,color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>#0e558<span class="pl-pds">'</span></span>,tooltipText<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Angular2 Tooltip<span class="pl-pds">'</span></span>}
         ]
         
-
+        //custom rotate
         <span class="pl-k">function</span> <span class="pl-en">rotate</span>(<span class="pl-smi"></span>){
             <span class="pl-en">return</span> ~~(Math.random() * 2) * 90;
         }
 
-        //custom rotate
+        //custom random
+        <span class="pl-k">function</span> <span class="pl-en">random</span>(<span class="pl-smi"></span>){
+            <span class="pl-en">return</span> 0.4; //a constant value here will ensure the word position is fixed upon each page refresh.
+        }
+
+       
         <span class="pl-k">function</span> <span class="pl-en">wordClicked</span>(<span class="pl-smi">word</span>){
             <span class="pl-en">alert</span>(word);
         }

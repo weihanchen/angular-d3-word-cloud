@@ -38,7 +38,6 @@
             .fontSize(function (d) {
                return d.size;
             })
-            .random(self.random || Math.random)
             .on('end', drawListener);
 
          $scope.$watch(watchParameters, watchListener, true);
@@ -102,11 +101,13 @@
                });
          }
 
-         function updateLayout(width, height, words, padding, rotate) {
+         function updateLayout(width, height, words, padding, rotate, random) {
             padding = padding || 5;
             rotate = rotate || defaultRotate;
+            random = random || Math.random;
             layout.size([width, height])
                .rotate(rotate)
+               .random(random)
                .padding(padding)
                .words(words);
             layout.start();
@@ -122,7 +123,7 @@
          function watchListener(newVal) {
             var parameters = angular.copy(newVal);
             if (angular.isUndefined(parameters.words) || angular.isUndefined(parameters.width) || angular.isUndefined(parameters.height)) return;
-            updateLayout(parameters.width, parameters.height, parameters.words, parameters.padding, parameters.rotate);
+            updateLayout(parameters.width, parameters.height, parameters.words, parameters.padding, parameters.rotate, parameters.random);
          }
       }
    }

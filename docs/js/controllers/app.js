@@ -15,9 +15,7 @@
       self.useTransition = true;
       self.wordClicked = wordClicked;
       self.words = [];
-      self.random = function(){
-         return 0.4; // a constant value here will ensure the word position is fixed upon each page refresh.
-      };
+      self.random = random;
       generateWords();
       angular.element($window).bind('resize', resizeWordsCloud);
       /**
@@ -64,6 +62,10 @@
             self.padding = self.editPadding;
             self.rotate = self.editRotate;
          });
+      }
+
+      function random() {
+         return 0.4; // a constant value here will ensure the word position is fixed upon each page refresh.
       }
 
       function wordClicked(word) {

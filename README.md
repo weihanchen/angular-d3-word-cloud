@@ -89,7 +89,9 @@ Inject `angular-d3-word-cloud` into angular module, set up some options to our c
 			{text: 'Angular',size: 25, color: '#6d989e', tooltipText: 'Angular Tooltip'},
 			{text: 'Angular2',size: 35, color: '#473fa3', tooltipText: 'Angular2 Tooltip'}
         ]
-        self.random = function(){
+        self.random = random;
+
+        function random() {
             return 0.4; // a constant value here will ensure the word position is fixed upon each page refresh.
         }
 
