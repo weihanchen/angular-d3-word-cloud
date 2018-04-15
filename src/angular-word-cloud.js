@@ -82,7 +82,7 @@
                      }).attr('opacity', 1);
                   }
                })
-               .on('mousemove', function () { return tooltip.style('top', (event.pageY - 10) + 'px').style('left', (event.pageX + 10) + 'px'); })
+               .on('mousemove', function () { return tooltip.style('top', (d3.event.pageY - 10) + 'px').style('left', (d3.event.pageX + 10) + 'px'); })
                .style('font-size', function (d) {
                   return d.size + 'px';
                })
